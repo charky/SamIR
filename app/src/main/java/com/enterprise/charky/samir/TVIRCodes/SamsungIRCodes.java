@@ -1,4 +1,4 @@
-package com.enterprise.charky.samir.IRTransmitter;
+package com.enterprise.charky.samir.TVIRCodes;
 
 /**
  * Created by charky on 19.08.15.

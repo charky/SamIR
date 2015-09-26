@@ -19,9 +19,12 @@ public class TLHIRCodeCompiler {
         try {
             String class_path = System.getProperty("user.dir");
 
-            class_path += "/app/src/main/java/com/enterprise/charky/samir/IRTransmitter";
+            String className = "PanasonicIRCodes";
+            String compiledLabel = "Compiled";
 
-            File file = new File(class_path + File.separator + "SamsungCompiledIRCodes.java");
+            class_path += "/app/src/main/java/com/enterprise/charky/samir/TVIRCodes";
+
+            File file = new File(class_path + File.separator + className + compiledLabel + ".java");
 
             System.out.format("Output-File-Path: %s%n",file.getAbsolutePath());
             // if file doesnt exists, then create it
@@ -32,14 +35,14 @@ public class TLHIRCodeCompiler {
             BufferedWriter bw = new BufferedWriter(fw);
 
             //Create Class Header
-            bw.write("package com.enterprise.charky.samir.IRTransmitter;\n\n");
+            bw.write("package com.enterprise.charky.samir.TVIRCodes;\n\n");
             bw.write("import com.enterprise.charky.samir.IRTransmitter.GenericTVManFactCodes;\n");
             bw.write("import com.enterprise.charky.samir.IRTransmitter.IRCommand;\n\n");
-            bw.write("public class SamsungCompiledIRCodes"
+            bw.write("public class " + className + compiledLabel
                     + ((classMode)?" extends GenericTVManFactCodes":"") + "{\n\n");
 
             //Write Body
-            Class<?> c = Class.forName("com.enterprise.charky.samir.IRTransmitter.SamsungIRCodes");
+            Class<?> c = Class.forName("com.enterprise.charky.samir.TVIRCodes." + className);
             int searchMods = Modifier.FINAL;
             Field[] flds = c.getDeclaredFields();
             System.out.format("Fields in Class '%s' containing modifiers:  %s%n",
@@ -67,8 +70,8 @@ public class TLHIRCodeCompiler {
                 if(classMode){
                     bw.write("\tpublic IRCommand getIRC" + subName + "() {\n"
                             + "\t\treturn IRCommand.createIRCommand(\n"
-                            + "\t\t\tSamsungCompiledIRCodes." + fName + "_frequency,\n"
-                            + "\t\t\tSamsungCompiledIRCodes." + fName + "_codes);}\n");
+                            + "\t\t\t" + className + compiledLabel + "." + fName + "_frequency,\n"
+                            + "\t\t\t" + className + compiledLabel + "." + fName + "_codes);}\n");
                 }
 
             }

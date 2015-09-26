@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.enterprise.charky.samir" >
 
-    <uses-permission android:name="android.permission.TRANSMIT_IR"
+    <uses-permission
+        android:name="android.permission.TRANSMIT_IR"
         android:required="false" />
+
     <uses-feature android:name="android.hardware.consumerir" />
 
     <application
@@ -19,6 +21,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ListActivity"
+            android:label="@string/title_activity_list" >
         </activity>
     </application>
 

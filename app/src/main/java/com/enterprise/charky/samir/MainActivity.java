@@ -1,17 +1,15 @@
 package com.enterprise.charky.samir;
 
 import android.app.Activity;
-import android.content.Context;
-import android.hardware.ConsumerIrManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.enterprise.charky.samir.IRTransmitter.GenericTVManFactCodes;
 import com.enterprise.charky.samir.IRTransmitter.IRTransmitter;
-import com.enterprise.charky.samir.IRTransmitter.SamsungCompiledIRCodes;
+import com.enterprise.charky.samir.TVIRCodes.SamNewIRCodesCompiled;
 
 public class MainActivity extends Activity {
 
@@ -24,7 +22,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         //Create IRTransmitter
-        irTransmitter = new IRTransmitter(this, new SamsungCompiledIRCodes());
+        irTransmitter = new IRTransmitter(this, new SamNewIRCodesCompiled());
 
         setContentView(R.layout.activity_main);
     }
@@ -65,38 +63,38 @@ public class MainActivity extends Activity {
                     break;
                 //Volume and Channel Buttons
                 case R.id.bt_VolUp:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCVolUp());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCVolume_Up());
                     break;
                 case R.id.bt_Mute:
                     irTransmitter.sendIR(tvManFactCodes.getIRCMute());
                     break;
                 case R.id.bt_VolDown:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCDown());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCVolume_Down());
                     break;
                 case R.id.bt_ChUp:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCChUp());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCChannel_Up());
                     break;
                 case R.id.bt_Info:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCInfo());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCInformation());
                     break;
                 case R.id.bt_ChDown:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCChDown());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCChannel_Down());
                     break;
                 //Menu Navigation Buttons
                 case R.id.bt_Up:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCUp());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Up());
                     break;
                 case R.id.bt_Left:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCLeft());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Left());
                     break;
                 case R.id.bt_Enter:
                     irTransmitter.sendIR(tvManFactCodes.getIRCEnter());
                     break;
                 case R.id.bt_Right:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCRight());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Right());
                     break;
                 case R.id.bt_Down:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCDown());
+                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Down());
                     break;
                 case R.id.bt_Exit:
                     irTransmitter.sendIR(tvManFactCodes.getIRCExit());
@@ -105,13 +103,14 @@ public class MainActivity extends Activity {
                 case R.id.bt_Power:
                     irTransmitter.sendIR(tvManFactCodes.getIRCPower());
                     break;
+                case R.id.bt_Menu:
+                    irTransmitter.sendIR(tvManFactCodes.getIRCMenu());
+                    break;
             }
         } catch (IRTransmitter.NoIREmitterException e) {
             e.printStackTrace();
         }
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,6 +128,8 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this,ListActivity.class);
+            startActivity(intent);
             return true;
         }
 
