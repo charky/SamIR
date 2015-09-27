@@ -1,9 +1,8 @@
-package com.enterprise.charky.samir.IRTransmitter;
+package com.enterprise.charky.samir.irtransmitter;
 
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.ConsumerIrManager;
-import android.util.Log;
 
 /**
  * Created by charky on 06.09.15.
@@ -11,16 +10,19 @@ import android.util.Log;
 public class IRTransmitter {
 
     private ConsumerIrManager mCIR;
-    private GenericTVManFactCodes tvManFactCodes;
+    private GenericIRCodes genericIRCodes;
 
-    public IRTransmitter(Activity activity,GenericTVManFactCodes tvManFactCodes){
+    public IRTransmitter(Activity activity,GenericIRCodes genericIRCodes){
         // Get a reference to the ConsumerIrManager
         mCIR = (ConsumerIrManager)activity.getSystemService(Context.CONSUMER_IR_SERVICE);
-        this.tvManFactCodes = tvManFactCodes;
+        this.genericIRCodes = genericIRCodes;
     }
 
-    public GenericTVManFactCodes getTvManFactCodes(){
-        return tvManFactCodes;
+    public GenericIRCodes getGenericIRCodes(){
+        return genericIRCodes;
+    }
+    public void setGenericIRCodes(GenericIRCodes genericIRCodes){
+        this.genericIRCodes = genericIRCodes;
     }
 
     public void sendIR(IRCommand irCommand) throws NoIREmitterException, IllegalArgumentException{

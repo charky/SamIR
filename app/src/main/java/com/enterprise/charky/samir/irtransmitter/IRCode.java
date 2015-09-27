@@ -1,4 +1,4 @@
-package com.enterprise.charky.samir.IRTransmitter;
+package com.enterprise.charky.samir.irtransmitter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,9 +7,6 @@ import java.util.List;
 /**
  * Created by charky on 19.08.15.
  */
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class IRCode {
 

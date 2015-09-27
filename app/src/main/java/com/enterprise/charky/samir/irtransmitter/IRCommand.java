@@ -1,4 +1,4 @@
-package com.enterprise.charky.samir.IRTransmitter;
+package com.enterprise.charky.samir.irtransmitter;
 
 /**
  * Created by charky on 05.09.15.
@@ -24,10 +24,10 @@ public class IRCommand {
     }
 
     public boolean isFrequencyAndCodesSet(){
-        if(frequency == 0){
+        if(frequency <= 0){
             return false;
         }
-        if(codes == null){
+        if(codes == null || codes.length == 0){
             return false;
         }
         return true;

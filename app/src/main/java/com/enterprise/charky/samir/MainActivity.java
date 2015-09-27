@@ -1,15 +1,14 @@
 package com.enterprise.charky.samir;
 
 import android.app.Activity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.enterprise.charky.samir.IRTransmitter.GenericTVManFactCodes;
-import com.enterprise.charky.samir.IRTransmitter.IRTransmitter;
-import com.enterprise.charky.samir.TVIRCodes.SamNewIRCodesCompiled;
+import com.enterprise.charky.samir.irtransmitter.GenericIRCodes;
+import com.enterprise.charky.samir.irtransmitter.IRTransmitter;
 
 public class MainActivity extends Activity {
 
@@ -22,89 +21,89 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         //Create IRTransmitter
-        irTransmitter = new IRTransmitter(this, new SamNewIRCodesCompiled());
+        //irTransmitter = new IRTransmitter(this, new SamsungIRCodes());
 
         setContentView(R.layout.activity_main);
     }
 
     public void RemoteButtonClick(View v) {
-        GenericTVManFactCodes tvManFactCodes = irTransmitter.getTvManFactCodes();
+        GenericIRCodes genericIRCodes = irTransmitter.getGenericIRCodes();
         try {
             switch (v.getId()) {
                 case R.id.bt_1:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC1());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_1());
                     break;
                 case R.id.bt_2:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC2());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_2());
                     break;
                 case R.id.bt_3:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC3());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_3());
                     break;
                 case R.id.bt_4:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC4());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_4());
                     break;
                 case R.id.bt_5:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC5());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_5());
                     break;
                 case R.id.bt_6:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC6());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_6());
                     break;
                 case R.id.bt_7:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC7());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_7());
                     break;
                 case R.id.bt_8:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC8());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_8());
                     break;
                 case R.id.bt_9:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC9());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_9());
                     break;
                 case R.id.bt_0:
-                    irTransmitter.sendIR(tvManFactCodes.getIRC0());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_0());
                     break;
                 //Volume and Channel Buttons
                 case R.id.bt_VolUp:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCVolume_Up());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_VOLUME_UP());
                     break;
                 case R.id.bt_Mute:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCMute());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_MUTE());
                     break;
                 case R.id.bt_VolDown:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCVolume_Down());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_VOLUME_DOWN());
                     break;
                 case R.id.bt_ChUp:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCChannel_Up());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_CHANNEL_UP());
                     break;
                 case R.id.bt_Info:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCInformation());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_INFORMATION());
                     break;
                 case R.id.bt_ChDown:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCChannel_Down());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_CHANNEL_DOWN());
                     break;
                 //Menu Navigation Buttons
                 case R.id.bt_Up:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Up());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_ARROW_UP());
                     break;
                 case R.id.bt_Left:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Left());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_ARROW_LEFT());
                     break;
                 case R.id.bt_Enter:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCEnter());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_ENTER());
                     break;
                 case R.id.bt_Right:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Right());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_ARROW_RIGHT());
                     break;
                 case R.id.bt_Down:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCArrow_Down());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_ARROW_DOWN());
                     break;
                 case R.id.bt_Exit:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCExit());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_EXIT());
                     break;
                 //Elementary Buttons
                 case R.id.bt_Power:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCPower());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_POWER());
                     break;
                 case R.id.bt_Menu:
-                    irTransmitter.sendIR(tvManFactCodes.getIRCMenu());
+                    irTransmitter.sendIR(genericIRCodes.getIRC_MENU());
                     break;
             }
         } catch (IRTransmitter.NoIREmitterException e) {
@@ -128,8 +127,6 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this,ListActivity.class);
-            startActivity(intent);
             return true;
         }
 
