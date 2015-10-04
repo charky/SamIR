@@ -24,5 +24,4 @@
         parent="@android:style/Widget.Holo.ActionBar.TabText">
         <item name="android:textColor">@color/titlebar_dots</item>
     </style>
-
 </resources>
